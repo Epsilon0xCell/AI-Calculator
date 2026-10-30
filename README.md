@@ -1,6 +1,6 @@
 ![ai_calculator banner](banner.png)
 
-# ai_calculator
+# AI-Calculator
 
 A terminal calculator chatbot in Python. It wraps ChatterBot with only its
 MathematicalEvaluation logic adapter, in read-only mode, so you type a maths
