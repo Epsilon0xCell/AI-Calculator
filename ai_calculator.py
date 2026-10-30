@@ -1,4 +1,10 @@
-from chatterbot import ChatBot
+import sys
+
+try:
+    from chatterbot import ChatBot
+except ImportError:
+    print("Calculator: ChatterBot is not installed. Install it with: pip install -r requirements.txt", file=sys.stderr)
+    sys.exit(1)
 
 # naming the ChatBot calculator
 # using mathematical evaluation logic
@@ -14,10 +20,15 @@ print('\033c')
 print("Hello, I am a calculator. How may I help you?")
 while (True):
     # take the input from the user
-    user_input = input("me: ")
-    
-    # check if the user has typed quit to exit the prgram   
-    if user_input.lower() == 'quit':
+    # closing the input (EOF) or pressing Ctrl-C exits cleanly, like quit
+    try:
+        user_input = input("me: ")
+    except (EOFError, KeyboardInterrupt):
+        print("Exiting")
+        break
+
+    # check if the user has typed quit to exit the prgram
+    if user_input.strip().lower() == 'quit':
         print("Exiting")
         break
 
@@ -26,5 +37,5 @@ while (True):
     try:
         response = Bot.get_response(user_input)
         print("Calculator:", response)
-    except:
+    except Exception:
         print("Calculator: Please enter valid input.")
