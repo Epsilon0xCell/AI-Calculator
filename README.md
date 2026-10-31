@@ -70,3 +70,9 @@ this repo re-implements.
 - `ai_calculator.py` - the whole program
 - `requirements.txt` - the ChatterBot dependency
 - `LICENSE` - GNU General Public License v3
+
+## Diagrams and maps
+
+I drew the system out in [AI-Calculator-Visuals](AI-Calculator-Visuals/): an architecture diagram, a sequence diagram of one question, a flowchart of the loop in main(), a product map, and a statistics sheet, with the written product map, statistics with citations, and the roadmap in [VISUAL.md](AI-Calculator-Visuals/VISUAL.md). Every sheet also ships as a PNG photograph of the paper page beside its SVG.
+
+![AI-Calculator architecture](AI-Calculator-Visuals/architecture.svg)
