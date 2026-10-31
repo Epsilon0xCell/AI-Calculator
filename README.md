@@ -47,6 +47,11 @@ Exiting
   `Calculator: Please enter valid input.` and the loop continues.
 - If ChatterBot is not installed, the program prints a short install hint
   to stderr and exits with status 1 instead of dumping a traceback.
+- An empty line is skipped and prompts again instead of being sent to
+  the adapter as a question.
+- Tests: `python3 -m unittest` covers the quit matching and, on a
+  machine without ChatterBot, the missing dependency path. The maths
+  loop itself needs a working ChatterBot install; see Honest limits.
 
 ## Honest limits
 
