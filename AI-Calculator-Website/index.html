@@ -3,109 +3,116 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AI Calculator: what it is, how it runs, where it stops</title>
+<title>AI Calculator: a flight log kept at altitude</title>
 <meta name="description" content="AI Calculator is one of my projects. The README in the repo is short, so this page sticks to what the files themselves show.">
 <style>
-:root {
-  --bg: #f0ead8; --panel: #faf6ea; --ink: #1e342c;
-  --mut: #ffffff;
-  --acc: #b26e28; --acc2: #ac362c;
-  --line: #faf6ea;
-}
-* { box-sizing: border-box; }
-body { margin: 0; background: var(--bg); color: var(--ink);
-  font-family: 'Palatino Linotype', Palatino, serif; line-height: 1.55; }
-code, pre, .mono { font-family: 'Menlo', monospace; }
-a { color: var(--acc2); }
-.hero { padding: 3rem 6vw 1rem; }
-.hero img.banner { width: 100%; height: auto; border: 1px solid var(--line);
-  border-radius: 10px; }
-.logo { width: 92px; height: 92px; border-radius: 18px;
-  border: 1px solid var(--line); }
-h1 { font-size: 2.4rem; margin: 0.4em 0 0.1em; }
-h2 { border-bottom: 2px solid var(--acc); padding-bottom: 0.2em;
-  margin-top: 2em; }
-.lede { font-size: 1.15rem; max-width: 62ch; }
-main { padding: 0 6vw 3rem; max-width: 1180px; margin: 0 auto; }
-.grid { display: grid; gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
-.card { background: var(--panel); border: 1px solid var(--line);
-  border-radius: 12px; padding: 1rem 1.2rem; }
-.card.pop { animation: rise 0.7s ease both; }
-@keyframes rise { from { opacity: 0; transform: translateY(14px); }
-  to { opacity: 1; transform: none; } }
-pre.code { background: #101014; color: #e8e6df; padding: 1rem 1.2rem;
-  border-radius: 12px; overflow-x: auto; font-size: 0.86rem;
-  border-left: 5px solid var(--acc); }
-table { border-collapse: collapse; width: 100%; }
-td, th { border-bottom: 1px solid var(--line); padding: 0.45rem 0.6rem;
-  text-align: left; }
-.shots { display: grid; gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
-.shots img { width: 100%; height: auto; border: 1px solid var(--line);
-  border-radius: 10px; background: #f4f1e8; }
-footer { padding: 2rem 6vw; border-top: 1px solid var(--line);
-  color: var(--mut); }
-.rail { display: flex; gap: 1.2rem; align-items: flex-start; }
-.rail nav { position: sticky; top: 1rem; min-width: 180px; }
-@media (max-width: 760px) { .rail { flex-direction: column; }
-  .rail nav { position: static; } }
-@media (prefers-reduced-motion: reduce) {
-  .card.pop { animation: none; } * { scroll-behavior: auto; } }
+@font-face { font-family:'Archivo Black'; src:url('assets/fonts/ArchivoBlack.ttf') format('truetype'); font-display:swap; }
+@font-face { font-family:'Archivo'; src:url('assets/fonts/Archivo.ttf') format('truetype'); font-display:swap; }
+:root { --violet:#241c44; --violet2:#322657; --grey:#8a8e9e; --panel:#3a2f63; --white:#f5f8ff; --copper:#c4783a; --ink:#eceaf4; }
+* { box-sizing:border-box; }
+body { margin:0; color:var(--ink); font-family:'Archivo',sans-serif; line-height:1.6;
+  background:linear-gradient(180deg,#171130 0%, var(--violet) 34%, #565a6e 78%, #6d707e 100%); }
+code,pre,.mono { font-family:ui-monospace,Menlo,monospace; }
+a { color:#cdbcf5; text-decoration:none; }
+a::before { content:"\25CB  "; color:var(--grey); }
+a:hover { color:var(--white); }
+a:hover::before { color:var(--copper); }
+.logbook { display:flex; gap:2rem; max-width:1240px; margin:0 auto; padding:0 4vw 3rem; }
+aside.logmargin { width:190px; flex:none; position:sticky; top:0; height:100vh; padding:2rem 0;
+  border-right:2px solid var(--copper);
+  background:repeating-linear-gradient(180deg, transparent 0 49px, rgba(196,120,58,.55) 49px 50px); }
+aside.logmargin .tick { display:block; font-size:.72rem; color:#b9b4cc; margin-bottom:2.6rem; }
+aside.logmargin nav a { display:block; padding:.35rem 0 .35rem .4rem; font-size:.92rem; }
+main.log { flex:1; min-width:0; padding-top:2rem; }
+.hero img.banner { width:100%; height:auto; border:1px solid rgba(245,248,255,.35); }
+.hero .plate-row { display:flex; gap:1.1rem; align-items:center; margin-top:1rem; }
+.logo { width:92px; height:92px; border:1px solid rgba(245,248,255,.35); }
+h1 { font-family:'Archivo Black',sans-serif; font-size:2.5rem; margin:.1em 0; letter-spacing:.01em; color:var(--white); }
+h2 { font-family:'Archivo Black',sans-serif; color:var(--white); font-size:1.45rem; margin:0 0 .6em; }
+h3 { color:var(--white); margin:.2em 0 .4em; }
+.lede { font-size:1.14rem; max-width:62ch; }
+.case { position:relative; background:var(--panel); border:1px solid rgba(245,248,255,.28); padding:1.1rem 1.3rem; margin:1rem 0;
+  background-image:radial-gradient(circle at 10px 10px, var(--copper) 3px, transparent 4px),radial-gradient(circle at calc(100% - 10px) 10px, var(--copper) 3px, transparent 4px),radial-gradient(circle at 10px calc(100% - 10px), var(--copper) 3px, transparent 4px),radial-gradient(circle at calc(100% - 10px) calc(100% - 10px), var(--copper) 3px, transparent 4px); }
+.grid { display:grid; gap:1rem; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); }
+.btn { display:inline-block; color:var(--white); padding:.55rem 1.3rem; margin:.2rem .3rem .2rem 0;
+  background:linear-gradient(180deg, rgba(230,232,244,.34), rgba(120,108,170,.30));
+  border:1px solid rgba(245,248,255,.5); clip-path:polygon(3% 0,97% 0,100% 100%,0 100%);
+  outline:1px dashed rgba(196,120,58,.0); transition:background .35s ease, transform .05s; }
+.btn::before { content:""; }
+.btn:hover { background:linear-gradient(180deg, rgba(230,232,244,.10), rgba(120,108,170,.12)); color:var(--white); }
+.btn:active { transform:translateY(2px); box-shadow:inset 0 0 0 3px rgba(38,28,66,.75); }
+pre.code { background:#0b0a12; color:#e8e6df; padding:1rem 1.2rem; overflow-x:auto; font-size:.86rem; border-left:5px solid var(--copper); }
+table { border-collapse:collapse; width:100%; }
+td,th { border-bottom:1px solid rgba(245,248,255,.25); padding:.45rem .6rem; text-align:left; }
+.gauges { display:flex; gap:6px; align-items:flex-end; margin:1.6rem 0; }
+.gauges .rail { flex:1; height:3px; background:var(--copper); align-self:center; }
+.tube { width:16px; border:1px solid rgba(245,248,255,.55); border-bottom:none; position:relative; height:44px; }
+.tube i { position:absolute; left:2px; right:2px; bottom:0; background:rgba(196,214,240,.65); display:block; }
+.shots { display:grid; gap:1rem; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); }
+.shots img { width:100%; height:auto; border:1px solid rgba(245,248,255,.3); background:#f4f1e8; }
+footer { max-width:1240px; margin:0 auto; padding:1.6rem 4vw 2.6rem; color:#d8d4e6; border-top:1px solid var(--copper); }
+.dateline { color:var(--copper); font-size:.78rem; letter-spacing:.14em; text-transform:uppercase; margin:2.2rem 0 .2rem; }
+@media (max-width:760px) { .logbook { flex-direction:column; } aside.logmargin { position:static; width:auto; height:auto; border-right:none; border-bottom:2px solid var(--copper); } }
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior:auto; } }
 </style>
 </head>
-<body class="layout-term">
-<!-- This page exists for AI-Calculator alone: the layout (terminal-frame),
-     the colors, and the type were picked for this project, not
-     shared with the other project pages. The code block below is
-     copied from the file it names, line for line. If it looks
-     plain, that is because the project is plain, and I would
-     rather the page match the project than dress it up. The one
-     thing I will not do here is oversell: what this project does
-     not do is stated on the page, not hidden from it. -->
+<body>
+<div class="logbook">
+<aside class="logmargin" aria-label="Flight log margin">
+  <span class="tick">0 m</span><span class="tick">200 m</span><span class="tick">400 m</span><span class="tick">600 m</span><span class="tick">800 m</span>
+  <nav aria-label="on this page">
+    <a href="#launch">Launch note</a>
+    <a href="#run">Run entry</a>
+    <a href="#files">The files</a>
+    <a href="#sheets">The sheets</a>
+    <a href="https://github.com/Epsilon0xCell/AI-Calculator">The repo</a>
+  </nav>
+  <span class="tick">1000 m</span><span class="tick">1200 m</span>
+</aside>
+<main class="log">
 <header class="hero">
-  <img class="logo" src="assets/logo.png" alt="AI Calculator logo">
-  <img class="banner" src="assets/banner.png" alt="">
-  <h1>AI Calculator</h1>
-  <p class="mono"><a href="https://github.com/Epsilon0xCell/AI-Calculator">github.com/Epsilon0xCell/AI-Calculator</a></p>
+  <img class="banner" src="assets/banner.png" alt="Balloon basket climbing through violet dusk, its name stencilled on its side">
+  <div class="plate-row">
+    <img class="logo" src="assets/logo.png" alt="AI Calculator logo">
+    <div>
+      <h1>AI Calculator</h1>
+      <p class="mono"><a href="https://github.com/Epsilon0xCell/AI-Calculator">github.com/Epsilon0xCell/AI-Calculator</a></p>
+    </div>
+  </div>
 </header>
 
-<main>
-  <section class="rail">
-    <nav aria-label="on this page">
-      <p class="mono"><a href="#run">Run it</a><br>
-      <a href="#files">The files</a><br>
-      <a href="#sheets">The sheets</a><br>
-      <a href="https://github.com/Epsilon0xCell/AI-Calculator">The repo</a></p>
-    </nav>
-    <div>
-      <p class="lede">AI Calculator is one of my projects. The README in the repo is short, so this page sticks to what the files themselves show.</p>
-      <div class="grid">
-        <div class="card pop"><h3>What it is</h3>
-          <p>AI Calculator: 3 files, 32 counted
-          lines across Python 30, Markdown 2. One job, done in the
-          open, in files you can read.</p></div>
-        <div class="card pop"><h3>The biggest piece</h3>
-          <p><code>ai_calculator.py</code> carries the most
-          lines. If the project grows, that file is where the growth
-          lands first, for better or worse.</p></div>
-        <div class="card pop"><h3>The honest gap</h3>
-          <p>No test files yet. That is the honest gap, and the roadmap in the visuals folder says what the first one should cover.</p></div>
-      </div>
-      <section id="run">
-        <h2>Run it</h2>
-        <p>The repo README has the exact commands for this one. The
-        shape is the shape for most of my projects: clone it, read the
-        top file first so you know what will happen, then run it on
-        something you do not mind breaking.</p>
-        <p class="mono">$ git clone https://github.com/Epsilon0xCell/AI-Calculator.git<br>$ cd AI-Calculator</p>
-      </section>
-      
-  <section aria-label="real code">
-    <h2>The code, as it sits in the repo</h2>
-    <p>From <code>ai_calculator.py</code>, line 1 on. I did
-    not tidy it for the page. What you see is what the file has.</p>
-    <pre class="code"><code>from chatterbot import ChatBot
+<section id="launch">
+  <p class="dateline">Log entry, launch</p>
+  <h2>Launch note</h2>
+  <p class="lede">AI Calculator is one of my projects. The README in the repo is short, so this page sticks to what the files themselves show.</p>
+  <p>It is a terminal calculator that wraps ChatterBot MathematicalEvaluation in read only mode. It lives in a terminal prompt that prints <code>Hello, I am a calculator. How may I help you?</code></p>
+  <div class="grid">
+    <div class="case"><h3>What it is</h3>
+      <p>AI Calculator: 3 files, 32 counted lines across Python 30, Markdown 2. One job, done in the open, in files you can read.</p></div>
+    <div class="case"><h3>The biggest piece</h3>
+      <p><code>ai_calculator.py</code> carries the most lines. If the project grows, that file is where the growth lands first, for better or worse.</p></div>
+    <div class="case"><h3>The honest gap</h3>
+      <p>No test files yet. That is the honest gap, and the roadmap in the visuals folder says what the first one should cover.</p></div>
+  </div>
+</section>
+
+<div class="gauges" aria-hidden="true"><span class="rail"></span><span class="tube"><i style="height:80%"></i></span><span class="tube"><i style="height:62%"></i></span><span class="tube"><i style="height:48%"></i></span><span class="tube"><i style="height:34%"></i></span><span class="tube"><i style="height:20%"></i></span><span class="rail"></span></div>
+
+<section id="run">
+  <p class="dateline">Log entry, ascent</p>
+  <h2>Run it</h2>
+  <p>The repo README has the exact commands for this one. The shape is the shape for most of my projects: clone it, read the top file first so you know what will happen, then run it on something you do not mind breaking.</p>
+  <p class="mono">$ git clone https://github.com/Epsilon0xCell/AI-Calculator.git<br>$ cd AI-Calculator<br>$ pip install -r requirements.txt</p>
+  <p><a class="btn" href="#files">Check the instruments</a> <a class="btn" href="https://github.com/Epsilon0xCell/AI-Calculator">Open the repo</a></p>
+  <p>Typing <code>quit</code> exits and prints <code>Exiting</code>. Closing the input (EOF, for example Ctrl-D) or pressing Ctrl-C also exits cleanly with <code>Exiting</code>. Input the bot cannot evaluate gets the reply <code>Calculator: Please enter valid input.</code> and the loop continues.</p>
+  <p>One admission, kept from the repo: the maths answering was not re-verified end to end on modern Python. ChatterBot's pinned dependencies are too old for a current Python 3.12 install without substitutions, and its NLTK corpus downloads were blocked in the test sandbox, so treat the maths answering as provided by ChatterBot's MathematicalEvaluation adapter, not as something this repo re-implements.</p>
+</section>
+
+<section aria-label="real code">
+  <p class="dateline">Log entry, instruments</p>
+  <h2>The code, as it sits in the repo</h2>
+  <p>From <code>ai_calculator.py</code>, line 1 on. I did not tidy it for the page. What you see is what the file has.</p>
+  <pre class="code"><code>from chatterbot import ChatBot
 
 # naming the ChatBot calculator
 # using mathematical evaluation logic
@@ -127,38 +134,35 @@ while (True):
     if user_input.lower() == &#x27;quit&#x27;:
         print(&quot;Exiting&quot;)
         break</code></pre>
-  </section>
-      <section id="files">
-        <h2>The files that matter</h2>
-        <table><tr><th>File</th><th>Lines</th></tr>
-        <tr><td><code>ai_calculator.py</code></td><td>30</td></tr>
-        <tr><td><code>README.md</code></td><td>2</td></tr>
-        <tr><td><code>LICENSE</code></td><td>0</td></tr>
-        </table>
-        <p>Names doing the work: <span class="mono">no named functions in the snapshot</span>.</p>
-      </section>
-      <section id="sheets">
-        <h2>Drawn by hand</h2>
-        <p>I sketch my projects on notebook paper so I have to
-        understand them well enough to draw them. The full set,
-        with the counts and how they were counted, is the
-        <a href="https://github.com/Epsilon0xCell/AI-Calculator/tree/main/AI-Calculator-Visuals">AI-Calculator-Visuals</a>
-        folder in the repo. Nothing is drawn over the binder holes.
-        That is a rule, not a style.</p>
-        <div class="shots">
-          <img src="assets/architecture.png" alt="Hand drawn architecture sheet for AI Calculator">
-          <img src="assets/flowchart.png" alt="Hand drawn flowchart sheet for AI Calculator">
-          <img src="assets/product-map.png" alt="Hand drawn product map sheet for AI Calculator">
-        </div>
-      </section>
-    </div>
-  </section>
+</section>
+
+<section id="files">
+  <p class="dateline">Log entry, manifest</p>
+  <h2>The files that matter</h2>
+  <table><tr><th>File</th><th>Lines</th></tr>
+  <tr><td><code>ai_calculator.py</code></td><td>30</td></tr>
+  <tr><td><code>README.md</code></td><td>2</td></tr>
+  <tr><td><code>LICENSE</code></td><td>0</td></tr>
+  </table>
+  <p>Names doing the work: <span class="mono">no named functions in the snapshot</span>.</p>
+</section>
+
+<div class="gauges" aria-hidden="true"><span class="rail"></span><span class="tube"><i style="height:80%"></i></span><span class="tube"><i style="height:62%"></i></span><span class="tube"><i style="height:48%"></i></span><span class="tube"><i style="height:34%"></i></span><span class="tube"><i style="height:20%"></i></span><span class="rail"></span></div>
+
+<section id="sheets">
+  <p class="dateline">Log entry, sheets</p>
+  <h2>Drawn by hand</h2>
+  <p>I sketch my projects on notebook paper so I have to understand them well enough to draw them. The full set, with the counts and how they were counted, is the <a href="https://github.com/Epsilon0xCell/AI-Calculator/tree/main/AI-Calculator-Visuals">AI-Calculator-Visuals</a> folder in the repo. Nothing is drawn over the binder holes. That is a rule, not a style.</p>
+  <div class="shots">
+    <img src="assets/architecture.png" alt="Hand drawn architecture sheet for AI Calculator">
+    <img src="assets/flowchart.png" alt="Hand drawn flowchart sheet for AI Calculator">
+    <img src="assets/product-map.png" alt="Hand drawn product map sheet for AI Calculator">
+  </div>
+</section>
 </main>
+</div>
 <footer>
-  <p>AI Calculator is one of my projects. This page was written
-  from the repo itself on 2026-10-30: the counts are the
-  repo's counts, the code is the repo's code, and the gaps are the
-  repo's gaps.</p>
+  <p>AI Calculator is one of my projects. This page was written from the repo itself on 2026-10-30: the counts are the repo's counts, the code is the repo's code, and the gaps are the repo's gaps.</p>
 </footer>
 </body>
 </html>

@@ -1,11 +1,21 @@
-![ai_calculator banner](banner.png)
+![AI-Calculator introduction, wordless](intro-banner.png)
+
 
 # AI-Calculator
+
+![AI-Calculator banner](banner.png)
+
+![AI-Calculator animated scene](assets-scene.svg)
+
 
 A terminal calculator chatbot in Python. It wraps ChatterBot with only its
 MathematicalEvaluation logic adapter, in read-only mode, so you type a maths
 question at the prompt and the bot answers in the same terminal. It does not
 learn from your input.
+
+<p align="center"><img src="sep-heavy.svg" alt=""></p>
+
+<p class="plate"><sub>FORECAST ENTRY 1 · ALTITUDE LOG · vane &#10148;</sub></p>
 
 ## Requirements
 
@@ -20,6 +30,10 @@ ChatterBot 1.0.5 is an old release with old pinned dependencies, so it is
 best installed into its own virtual environment. On first use ChatterBot
 also downloads NLTK data files, which needs network access. The bot stores
 its data in a `db.sqlite3` file created in the directory you run it from.
+
+<p align="center"><img src="sep-heavy.svg" alt=""></p>
+
+<p class="plate"><sub>FORECAST ENTRY 2 · ALTITUDE LOG</sub></p>
 
 ## Run
 
@@ -37,6 +51,10 @@ me: quit
 Exiting
 ```
 
+<p align="center"><img src="sep-heavy.svg" alt=""></p>
+
+<p class="plate"><sub>FORECAST ENTRY 3 · ALTITUDE LOG</sub></p>
+
 ## Behaviour verified by testing
 
 - Typing `quit` exits and prints `Exiting`. The match is case-insensitive
@@ -53,7 +71,13 @@ Exiting
   machine without ChatterBot, the missing dependency path. The maths
   loop itself needs a working ChatterBot install; see Honest limits.
 
+<p align="center"><img src="sep-heavy.svg" alt=""></p>
+
+<p class="plate"><sub>FORECAST ENTRY 4 · ALTITUDE LOG</sub></p>
+
 ## Honest limits
+
+<blockquote class="callout"><strong>NOTE FROM THE LOG</strong>: Treat the maths answering as provided by ChatterBot's MathematicalEvaluation adapter, not as something this repo re-implements.</blockquote>
 
 During the improvement pass for this repo, the loop behaviour above was
 verified with a real ChatterBot 1.0.5 install in a virtual environment.
@@ -65,11 +89,19 @@ script replied `Please enter valid input.` Treat the maths answering as
 provided by ChatterBot's MathematicalEvaluation adapter, not as something
 this repo re-implements.
 
+<p align="center"><img src="sep-heavy.svg" alt=""></p>
+
+<p class="plate"><sub>FORECAST ENTRY 5 · ALTITUDE LOG</sub></p>
+
 ## Files
 
 - `ai_calculator.py` - the whole program
 - `requirements.txt` - the ChatterBot dependency
 - `LICENSE` - GNU General Public License v3
+
+<p align="center"><img src="sep-heavy.svg" alt=""></p>
+
+<p class="plate"><sub>FORECAST ENTRY 6 · ALTITUDE LOG</sub></p>
 
 ## Diagrams and maps
 
