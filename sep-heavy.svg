@@ -1,11 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 44" width="1200" height="44" role="img" aria-label="Barometer separator, heavy">
-<line x1="0" y1="22" x2="1200" y2="22" stroke="#c4783a" stroke-width="3"/>
-<g stroke="#8a8e9e" stroke-width="1.4"><line x1="520" y1="14" x2="520" y2="30"/><line x1="560" y1="16" x2="560" y2="28"/><line x1="640" y1="16" x2="640" y2="28"/><line x1="680" y1="14" x2="680" y2="30"/></g>
-<circle cx="600" cy="22" r="13" fill="#241c44" stroke="#c4783a" stroke-width="2.4"/>
-<g name="barometer-needle">
-  <animateTransform attributeName="transform" type="rotate" values="0 600 22;-38 600 22;-30 600 22;-36 600 22" dur="5s" repeatCount="2"/>
-  <line x1="600" y1="22" x2="590" y2="12" stroke="#f5f8ff" stroke-width="2.6"/>
-</g>
-<circle cx="600" cy="22" r="2.6" fill="#c4783a"/>
-<text x="612" y="17" font-family="monospace" font-size="9" fill="#c4783a">STORM</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="26" viewBox="0 0 800 26">
+<rect width="800" height="26" fill="#0b3d91"/>
+<rect x="0" y="11" width="800" height="4" fill="#ffffff"/>
+<circle cx="0" cy="13" r="7" fill="#ffd23f">
+<animate attributeName="cx" values="0;800" dur="4.5s" repeatCount="indefinite"/></circle>
+<circle cx="400" cy="13" r="4" fill="#ffffff"/>
 </svg>

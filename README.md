@@ -3,6 +3,9 @@
 
 # AI-Calculator
 
+**Drawn to Answer**
+_Questions drafted in white line on blue, answered on the same sheet._
+
 ![AI-Calculator banner](banner.png)
 
 ![AI-Calculator animated scene](assets-scene.svg)
@@ -15,7 +18,7 @@ learn from your input.
 
 <p align="center"><img src="sep-heavy.svg" alt=""></p>
 
-<p class="plate"><sub>FORECAST ENTRY 1 · ALTITUDE LOG · vane &#10148;</sub></p>
+<p class="plate"><sub>SHEET 1 · DRAWING OFFICE · chalk line &#10148;</sub></p>
 
 ## Requirements
 
@@ -33,7 +36,7 @@ its data in a `db.sqlite3` file created in the directory you run it from.
 
 <p align="center"><img src="sep-heavy.svg" alt=""></p>
 
-<p class="plate"><sub>FORECAST ENTRY 2 · ALTITUDE LOG</sub></p>
+<p class="plate"><sub>SHEET 2 · DRAWING OFFICE</sub></p>
 
 ## Run
 
@@ -53,7 +56,7 @@ Exiting
 
 <p align="center"><img src="sep-heavy.svg" alt=""></p>
 
-<p class="plate"><sub>FORECAST ENTRY 3 · ALTITUDE LOG</sub></p>
+<p class="plate"><sub>SHEET 3 · DRAWING OFFICE</sub></p>
 
 ## Behaviour verified by testing
 
@@ -73,11 +76,11 @@ Exiting
 
 <p align="center"><img src="sep-heavy.svg" alt=""></p>
 
-<p class="plate"><sub>FORECAST ENTRY 4 · ALTITUDE LOG</sub></p>
+<p class="plate"><sub>SHEET 4 · DRAWING OFFICE</sub></p>
 
 ## Honest limits
 
-<blockquote class="callout"><strong>NOTE FROM THE LOG</strong>: Treat the maths answering as provided by ChatterBot's MathematicalEvaluation adapter, not as something this repo re-implements.</blockquote>
+<blockquote class="callout"><strong>NOTE FROM THE DRAWING BOARD</strong>: Treat the maths answering as provided by ChatterBot's MathematicalEvaluation adapter, not as something this repo re-implements.</blockquote>
 
 During the improvement pass for this repo, the loop behaviour above was
 verified with a real ChatterBot 1.0.5 install in a virtual environment.
@@ -91,7 +94,7 @@ this repo re-implements.
 
 <p align="center"><img src="sep-heavy.svg" alt=""></p>
 
-<p class="plate"><sub>FORECAST ENTRY 5 · ALTITUDE LOG</sub></p>
+<p class="plate"><sub>SHEET 5 · DRAWING OFFICE</sub></p>
 
 ## Files
 
@@ -101,7 +104,7 @@ this repo re-implements.
 
 <p align="center"><img src="sep-heavy.svg" alt=""></p>
 
-<p class="plate"><sub>FORECAST ENTRY 6 · ALTITUDE LOG</sub></p>
+<p class="plate"><sub>SHEET 6 · DRAWING OFFICE</sub></p>
 
 ## Diagrams and maps
 
