@@ -3,25 +3,25 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AI Calculator: a flight log kept at altitude</title>
+<title>AI Calculator: drawn to answer</title>
 <meta name="description" content="AI Calculator is one of my projects. The README in the repo is short, so this page sticks to what the files themselves show.">
 <style>
 @font-face { font-family:'Archivo Black'; src:url('assets/fonts/ArchivoBlack.ttf') format('truetype'); font-display:swap; }
 @font-face { font-family:'Archivo'; src:url('assets/fonts/Archivo.ttf') format('truetype'); font-display:swap; }
-:root { --violet:#241c44; --violet2:#322657; --grey:#8a8e9e; --panel:#3a2f63; --white:#f5f8ff; --copper:#c4783a; --ink:#eceaf4; }
+:root { --violet:#0b3d91; --violet2:#0e46a0; --grey:#9db8dd; --panel:#103f7e; --white:#f5f8ff; --copper:#ffd23f; --ink:#eaf1fd; }
 * { box-sizing:border-box; }
 body { margin:0; color:var(--ink); font-family:'Archivo',sans-serif; line-height:1.6;
-  background:linear-gradient(180deg,#171130 0%, var(--violet) 34%, #565a6e 78%, #6d707e 100%); }
+  background:linear-gradient(180deg,#062556 0%, var(--violet) 34%, #2c5ea8 78%, #4878bd 100%); }
 code,pre,.mono { font-family:ui-monospace,Menlo,monospace; }
-a { color:#cdbcf5; text-decoration:none; }
+a { color:#bcd2f5; text-decoration:none; }
 a::before { content:"\25CB  "; color:var(--grey); }
 a:hover { color:var(--white); }
 a:hover::before { color:var(--copper); }
 .logbook { display:flex; gap:2rem; max-width:1240px; margin:0 auto; padding:0 4vw 3rem; }
 aside.logmargin { width:190px; flex:none; position:sticky; top:0; height:100vh; padding:2rem 0;
   border-right:2px solid var(--copper);
-  background:repeating-linear-gradient(180deg, transparent 0 49px, rgba(196,120,58,.55) 49px 50px); }
-aside.logmargin .tick { display:block; font-size:.72rem; color:#b9b4cc; margin-bottom:2.6rem; }
+  background:repeating-linear-gradient(180deg, transparent 0 49px, rgba(255,210,63,.55) 49px 50px); }
+aside.logmargin .tick { display:block; font-size:.72rem; color:#bcd2f5; margin-bottom:2.6rem; }
 aside.logmargin nav a { display:block; padding:.35rem 0 .35rem .4rem; font-size:.92rem; }
 main.log { flex:1; min-width:0; padding-top:2rem; }
 .hero img.banner { width:100%; height:auto; border:1px solid rgba(245,248,255,.35); }
@@ -35,13 +35,13 @@ h3 { color:var(--white); margin:.2em 0 .4em; }
   background-image:radial-gradient(circle at 10px 10px, var(--copper) 3px, transparent 4px),radial-gradient(circle at calc(100% - 10px) 10px, var(--copper) 3px, transparent 4px),radial-gradient(circle at 10px calc(100% - 10px), var(--copper) 3px, transparent 4px),radial-gradient(circle at calc(100% - 10px) calc(100% - 10px), var(--copper) 3px, transparent 4px); }
 .grid { display:grid; gap:1rem; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); }
 .btn { display:inline-block; color:var(--white); padding:.55rem 1.3rem; margin:.2rem .3rem .2rem 0;
-  background:linear-gradient(180deg, rgba(230,232,244,.34), rgba(120,108,170,.30));
+  background:linear-gradient(180deg, rgba(188,210,245,.34), rgba(46,94,168,.30));
   border:1px solid rgba(245,248,255,.5); clip-path:polygon(3% 0,97% 0,100% 100%,0 100%);
-  outline:1px dashed rgba(196,120,58,.0); transition:background .35s ease, transform .05s; }
+  outline:1px dashed rgba(255,210,63,.0); transition:background .35s ease, transform .05s; }
 .btn::before { content:""; }
-.btn:hover { background:linear-gradient(180deg, rgba(230,232,244,.10), rgba(120,108,170,.12)); color:var(--white); }
-.btn:active { transform:translateY(2px); box-shadow:inset 0 0 0 3px rgba(38,28,66,.75); }
-pre.code { background:#0b0a12; color:#e8e6df; padding:1rem 1.2rem; overflow-x:auto; font-size:.86rem; border-left:5px solid var(--copper); }
+.btn:hover { background:linear-gradient(180deg, rgba(188,210,245,.10), rgba(46,94,168,.12)); color:var(--white); }
+.btn:active { transform:translateY(2px); box-shadow:inset 0 0 0 3px rgba(6,37,86,.75); }
+pre.code { background:#06203f; color:#eaf1fd; padding:1rem 1.2rem; overflow-x:auto; font-size:.86rem; border-left:5px solid var(--copper); }
 table { border-collapse:collapse; width:100%; }
 td,th { border-bottom:1px solid rgba(245,248,255,.25); padding:.45rem .6rem; text-align:left; }
 .gauges { display:flex; gap:6px; align-items:flex-end; margin:1.6rem 0; }
@@ -49,8 +49,8 @@ td,th { border-bottom:1px solid rgba(245,248,255,.25); padding:.45rem .6rem; tex
 .tube { width:16px; border:1px solid rgba(245,248,255,.55); border-bottom:none; position:relative; height:44px; }
 .tube i { position:absolute; left:2px; right:2px; bottom:0; background:rgba(196,214,240,.65); display:block; }
 .shots { display:grid; gap:1rem; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); }
-.shots img { width:100%; height:auto; border:1px solid rgba(245,248,255,.3); background:#f4f1e8; }
-footer { max-width:1240px; margin:0 auto; padding:1.6rem 4vw 2.6rem; color:#d8d4e6; border-top:1px solid var(--copper); }
+.shots img { width:100%; height:auto; border:1px solid rgba(245,248,255,.3); background:#ffffff; }
+footer { max-width:1240px; margin:0 auto; padding:1.6rem 4vw 2.6rem; color:#c9d9f6; border-top:1px solid var(--copper); }
 .dateline { color:var(--copper); font-size:.78rem; letter-spacing:.14em; text-transform:uppercase; margin:2.2rem 0 .2rem; }
 @media (max-width:760px) { .logbook { flex-direction:column; } aside.logmargin { position:static; width:auto; height:auto; border-right:none; border-bottom:2px solid var(--copper); } }
 @media (prefers-reduced-motion: reduce) { * { scroll-behavior:auto; } }
@@ -71,7 +71,7 @@ footer { max-width:1240px; margin:0 auto; padding:1.6rem 4vw 2.6rem; color:#d8d4
 </aside>
 <main class="log">
 <header class="hero">
-  <img class="banner" src="assets/banner.png" alt="Balloon basket climbing through violet dusk, its name stencilled on its side">
+  <img class="banner" src="assets/banner.png" alt="A terminal window drawn in white line on blueprint blue, a speech bubble returning the solved answer">
   <div class="plate-row">
     <img class="logo" src="assets/logo.png" alt="AI Calculator logo">
     <div>
