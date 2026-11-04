@@ -1,4 +1,6 @@
-![AI-Calculator introduction, wordless](intro-banner.png)
+<p align="center"><img src="intro-banner.png" alt="AI-Calculator introduction, wordless" width="800"></p>
+
+<p align="center"><img src="logo.png" alt="AI-Calculator logo" width="180"></p>
 
 
 # AI-Calculator
@@ -15,6 +17,15 @@ A terminal calculator chatbot in Python. It wraps ChatterBot with only its
 MathematicalEvaluation logic adapter, in read-only mode, so you type a maths
 question at the prompt and the bot answers in the same terminal. It does not
 learn from your input.
+
+## Contents
+
+- [Requirements](#requirements)
+- [Run](#run)
+- [Behaviour verified by testing](#behaviour-verified-by-testing)
+- [Honest limits](#honest-limits)
+- [Files](#files)
+- [Diagrams and maps](#diagrams-and-maps)
 
 <p align="center"><img src="sep-heavy.svg" alt=""></p>
 
@@ -111,3 +122,5 @@ this repo re-implements.
 I drew the system out in [AI-Calculator-Visuals](AI-Calculator-Visuals/): an architecture diagram, a sequence diagram of one question, a flowchart of the loop in main(), a product map, and a statistics sheet, with the written product map, statistics with citations, and the roadmap in [VISUAL.md](AI-Calculator-Visuals/VISUAL.md). Every sheet also ships as a PNG photograph of the paper page beside its SVG.
 
 ![AI-Calculator architecture](AI-Calculator-Visuals/architecture.svg)
+
+<p align="center"><sub>Architecture diagram from AI-Calculator-Visuals.</sub></p>
